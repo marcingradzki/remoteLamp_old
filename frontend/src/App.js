@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLightbulb, faClock, faInfoCircle, faCloudMoon } from '@fortawesome/free-solid-svg-icons'
+import { faLightbulb, faClock, faInfoCircle, faCloudMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import TimePicker from "./TimePicker";
 import Icon from './icon';
 import Snackbar from './snackbar';
+import Drawer from './drawer/drawer';
 
-library.add(faLightbulb, faClock, faInfoCircle, faCloudMoon);
+library.add(faLightbulb, faClock, faInfoCircle, faCloudMoon, faSun);
 
 const Container = styled.div`
   display: grid;
@@ -41,6 +42,7 @@ class App extends Component {
       'sunset': { icon: 'cloud-moon', width: '10vh', height: '10vh' },
     },
     snackbar: false,
+    drawer: false,
     message: '',
     time: new Date().toISOString(),
   }
@@ -52,11 +54,17 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <Drawer
+          sunset={'18:16'}
+          customTime={'Unset'}
+          open={this.state.drawer}
+          toggleDrawer={() => this.setState({ drawer: false })}
+        />
         <Switch>
           <Icon {...this.state.icons.bulb} />
         </Switch>
         <Buttons>
-          <Icon {...this.state.icons.details} />
+          <Icon {...this.state.icons.details} toggleButton onClick={() => this.setState({ drawer: true })}/>
           <Icon {...this.state.icons.time} toggleButton onClick={this.openTimePicker}/>
           <Icon {...this.state.icons.sunset} onClick={state => {
             this.setState({ snackbar: true, message: `Sunset mode: ${state ? 'OFF' : 'ON'}` });
