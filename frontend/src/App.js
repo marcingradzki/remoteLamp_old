@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLightbulb, faClock, faInfoCircle, faCloudMoon } from '@fortawesome/free-solid-svg-icons'
+import TimePicker from "./TimePicker";
 import Icon from './icon';
 
 library.add(faLightbulb, faClock, faInfoCircle, faCloudMoon);
@@ -30,30 +31,18 @@ const Buttons = styled.div`
 `;
 
 class App extends Component {
-
+  picker = React.createRef();
   state = {
     icons: {
-      'bulb': {
-        icon: 'lightbulb',
-        width: '40vh',
-        height: '40vh',
-      },
-      'time': {
-        icon: 'clock',
-        width: '10vh',
-        height: '10vh',
-      },
-      'details': {
-        icon: 'info-circle',
-        width: '10vh',
-        height: '10vh',
-      },
-      'sunset': {
-        icon: 'cloud-moon',
-        width: '10vh',
-        height: '10vh',
-      },
+      'bulb': { icon: 'lightbulb', width: '40vh', height: '40vh' },
+      'time': { icon: 'clock', width: '10vh', height: '10vh' },
+      'details': { icon: 'info-circle', width: '10vh', height: '10vh' },
+      'sunset': { icon: 'cloud-moon', width: '10vh', height: '10vh' },
     }
+  }
+
+  openTimePicker = () => {
+    this.picker.current.open();
   }
 
   render() {
@@ -64,9 +53,10 @@ class App extends Component {
         </Switch>
         <Buttons>
           <Icon {...this.state.icons.details} />
-          <Icon {...this.state.icons.time} />
+          <Icon {...this.state.icons.time} toggleButton onClick={this.openTimePicker}/>
           <Icon {...this.state.icons.sunset} />
         </Buttons>
+        <TimePicker picker={this.picker}/>
       </Container>
     );
   }

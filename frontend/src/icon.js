@@ -20,14 +20,20 @@ const Icon = styled.svg`
     padding: 10px;
 `;
 
-export default ({icon, width, height}) => {
+export default ({toggleButton, icon, width, height, onClick}) => {
     const [clicked, setClicked] = React.useState(false);
     return (
         <Icon
             width={width}
             height={height}
             glow={clicked}
-            onClick={() => setClicked(!clicked)}
+            onClick={() => {
+                setClicked(!clicked);
+                toggleButton && setTimeout(() => {
+                    setClicked(false);
+                }, 180);
+                onClick && onClick();
+            }}
         >
             <FontAwesomeIcon icon={icon} />
         </Icon>
