@@ -17,6 +17,9 @@ const customTheme = createMuiTheme({
 		MuiSnackbarContent: {
 			root: {
 				flexGrow: '0 !important',
+				backgroundColor: '#40798C',
+				color: '#CADADF',
+				fontWeight: 'bold',
 			}
 		}
 	},
