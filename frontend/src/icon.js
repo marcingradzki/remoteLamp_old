@@ -32,7 +32,7 @@ export default ({toggleButton, icon, width, height, onClick}) => {
                 toggleButton && setTimeout(() => {
                     setClicked(false);
                 }, 180);
-                onClick && onClick();
+                onClick && onClick(clicked);
             }}
         >
             <FontAwesomeIcon icon={icon} />

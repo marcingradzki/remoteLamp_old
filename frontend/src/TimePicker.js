@@ -9,7 +9,7 @@ export default props => {
                 label="24 hours"
                 value={new Date()}
                 onClose={() => {}}
-                onChange={() => {}}
+                onChange={props.onChange}
                 ref={props.picker}
             />
         </div>
