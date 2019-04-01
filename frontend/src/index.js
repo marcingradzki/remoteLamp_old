@@ -6,6 +6,7 @@ import MomentUtils from '@date-io/moment';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from './Context';
 
 const customTheme = createMuiTheme({
 	palette: {
@@ -28,7 +29,9 @@ const customTheme = createMuiTheme({
 ReactDOM.render(
 <MuiThemeProvider theme={customTheme}>
     <MuiPickersUtilsProvider utils={MomentUtils}>
-        <App />
+		<Provider>
+        	<App />
+		</Provider>
     </MuiPickersUtilsProvider>
 </MuiThemeProvider>
 , document.getElementById('root'));

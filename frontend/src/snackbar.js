@@ -4,8 +4,7 @@ import { withStyles } from '@material-ui/core';
 
 const styles = {
     root: {
-        width: '60%',
-        transform: 'translate(20vw, 0px)',
+        width: 'auto',
     },
 }
 
@@ -16,7 +15,7 @@ const SnackbarComponent = ({ open, onClose, message, classes }) => {
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             open={open}
             onClose={onClose}
-            autoHideDuration={1000}
+            autoHideDuration={2000}
             ContentProps={{
                 'aria-describedby': 'message-id',
             }}

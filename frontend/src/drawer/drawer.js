@@ -23,7 +23,7 @@ const DrawerComponent = ({ open, toggleDrawer, sunset, customTime }) => {
           >
             <Row text="Sunset today" time={sunset} icon="sun"/>
             <Divider />
-            <Row text="Custom lighting time" time={customTime} icon="clock"/>
+            <Row text="Custom lighting" time={customTime} icon="clock"/>
           </DrawerContent>
         </Drawer>
     );

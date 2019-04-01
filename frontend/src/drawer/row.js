@@ -33,7 +33,7 @@ const RowComponent = ({ classes, text, time, icon }) => {
                 <FontAwesomeIcon icon={icon} />
             </div>
             <Typography variant="h5" className={classes.typography}>{text}: </Typography>
-            <span>{time}</span>
+            <span>{time || 'UNSET'}</span>
         </Row>
     );
 }
